@@ -1,0 +1,47 @@
+stages:
+  - test
+  - build
+  - deploy
+  - final_test
+
+run_unit_tests:
+  stage: test
+  before_script:
+    - echo "Preparing test data..."
+  script:
+    - echo "Running unit tests..."
+  after_script:
+    - echo "Cleaning up temporary files..."
+
+run_lint_tests:
+  stage: test
+  before_script:
+    - echo "Preparing test data..."
+  script:
+    - echo "Running lint tests..."
+  after_script:
+    - echo "Cleaning up temporary files..."
+
+build_image:
+  stage: build
+  script: 
+    - echo "Building the docker image..."
+    - echo "Tagging the docker image..."
+
+push_image:
+  stage: build
+  script: 
+    - echo "Logging into docker registry..."
+    - echo "Pushing docker image to registry..."
+
+deploy_image:
+  stage: deploy
+  script: 
+    - echo "Deploying docker image to dev server..."
+
+test_final_image:
+  stage: final_test
+  script:
+    - echo " Congratulation DANIEL "
+
+
